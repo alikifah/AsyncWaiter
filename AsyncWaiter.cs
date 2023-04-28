@@ -17,7 +17,7 @@ using System.Threading.Tasks;
     }
 
 
-    public class AsyncWaiter<T>
+     public class AsyncWaiter<T>
     {
         #region private members
         private int timeout_ms;
@@ -25,11 +25,13 @@ using System.Threading.Tasks;
         private CancellationToken ct;
         private CancellationTokenSource cts;
         private T response;
+        bool autoReset = false;
         #endregion
 
         #region constructor and destructor
-        public AsyncWaiter(int timeout_ms)
+        public AsyncWaiter(int timeout_ms, bool autoReset = false)
         {
+            this.autoReset = autoReset;
             this.timeout_ms = timeout_ms;
             cts = new CancellationTokenSource();
             ct = cts.Token;
@@ -70,8 +72,13 @@ using System.Threading.Tasks;
             }
             finally
             {
-                cts?.Dispose();
-                cts = null;
+                if (autoReset)
+                    Reset();
+                else
+                {
+                    cts?.Dispose();
+                    cts = null;
+                }
             }
         }
         // receive the waited object
@@ -79,10 +86,8 @@ using System.Threading.Tasks;
         {
             if (isReceived) return;
             isReceived = true;
-
             this.response = response;
             cts?.Cancel();
         }
         #endregion
-
     }
