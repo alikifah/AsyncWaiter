@@ -14,7 +14,7 @@ public static class program
     // create a waiter, that waits max. 2 seconds for the response
     static AsyncWaiter<int> waiter = new AsyncWaiter<int>(MAX_TIME_TO_WAIT_MS);
 
-    // thi method mimics sending a request, waiting for response and invoking a callback when response arrives
+    // this method mimics sending a request, waiting for response and invoking a callback when response arrives
     public static void RequestValue(Action<int> onResulCallback)
     {
         Random random = new Random();
