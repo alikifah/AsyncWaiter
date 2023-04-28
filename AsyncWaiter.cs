@@ -78,7 +78,7 @@ using System.Threading.Tasks;
             isReceived = true;
 
             this.response = response;
-            cts.Cancel();
+            cts?.Cancel();
         }
         #endregion
 
