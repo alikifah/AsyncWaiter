@@ -46,6 +46,7 @@ using System.Threading.Tasks;
             if (cts != null) return;
             cts = new CancellationTokenSource();
             ct = cts.Token;
+            isReceived = false;
         }
 
         //  wait for the "Receive" method to be called or for timeout_ms to run out
