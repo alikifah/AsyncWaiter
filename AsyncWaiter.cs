@@ -70,6 +70,7 @@ using System.Threading.Tasks;
             finally
             {
                 cts?.Dispose();
+                cts = null;
             }
         }
         // receive the waited object
