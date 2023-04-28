@@ -43,6 +43,7 @@ using System.Threading.Tasks;
         // reset the waiter to be reused
         public void Reset()
         {
+            if (cts != null) return;
             cts = new CancellationTokenSource();
             ct = cts.Token;
         }
@@ -68,7 +69,7 @@ using System.Threading.Tasks;
             }
             finally
             {
-                cts.Dispose();
+                cts?.Dispose();
             }
         }
         // receive the waited object
