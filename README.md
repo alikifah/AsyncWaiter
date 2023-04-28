@@ -36,7 +36,7 @@ public static class program
 
     public static async Task Main()
     {
-        // first, we call the method supplied with the callback
+        // first, we call the method supplied with the callback asynchronously in order not to block the main thread
         _ = Task.Run( ()=>  RequestValue(onvalueReceived));
 
         // then we wait for the "waiter.Receive" to be called or for MAX_TIME_TO_WAIT_MS to run out
