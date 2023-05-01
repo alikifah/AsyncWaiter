@@ -40,11 +40,11 @@ public static class program
         _ = Task.Run( ()=>  RequestValue(onvalueReceived));
 
         // then we wait for the "waiter.Receive" to be called or for MAX_TIME_TO_WAIT_MS to run out
-        var d = await waiter.Wait();
+        var result = await waiter.Wait();
 
         // desplay result
-        if (!d.IsTimeOut)
-            Console.WriteLine(d.Data);
+        if (!result.IsTimeOut)
+            Console.WriteLine(result.Data);
         else
             Console.WriteLine("Time out!");
 
