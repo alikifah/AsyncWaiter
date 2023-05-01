@@ -1,6 +1,7 @@
 # AsyncWaiter
 
-A state machine class, that allows waiting for callback methods in async / await context
+A state machine class, that allows waiting for callback methods in async / await context. This state machine acts also similar to AutoResetEvent but in async style(awaitable AutoResetEvent).
+
 
 ## Example of use
 
