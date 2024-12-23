@@ -45,6 +45,7 @@ using System.Threading.Tasks;
         // reset the waiter to be reused
         public void Reset()
         {
+            cts?.Dispose();
             cts = new CancellationTokenSource();
             ct = cts.Token;
             isReceived = false;
